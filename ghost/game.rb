@@ -25,12 +25,17 @@ class Game
         return false if !alphabet.include?(str)
 
         @dictionary.any? { |word| word.include?(@fragment + str) }
-        
+
     end
 
     def take_turn(player)
         letter = @current_player.guess
 
+        until valid_play?(str)
+            puts "wrong input"
+            str = @current_player.guess
+        end
+        @fragment += str
     end
 
     
