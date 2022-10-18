@@ -11,6 +11,7 @@ class Player
     end
 
     def guess
+        puts "#{@name}, enter a letter:"
         gets.chomp.downcase
     end
 

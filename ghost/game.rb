@@ -1,5 +1,5 @@
-require "./player.rb"
 require 'set'
+require "./player.rb"
 
 class Game
 
@@ -13,27 +13,28 @@ class Game
 
         @fragment = ""
         @current_player = @player_1
-        
-        
-        
+    
     end
 
     def next_player!
         @current_player == @player_1 ? @current_player = @player_2 : @current_player = @player_1         
     end
 
-    def take_turn(player)
-        puts "enter a single letter"
-        input = gets.chomp
-        @fragment += input
-    end
-
-    # def word_checker?(word)
-    #     @dictionary.include?(word)
-    # end
-
     def valid_play?(str)
         alphabet = ("a".."z").to_a
+        return false if !alphabet.include?(str)
+
+        @dictionary.any? { |word| word.include?(@fragment + str) }
+        
     end
+
+    def take_turn(player)
+        letter = @current_player.guess
+
+    end
+
+    
+
+    
 
 end
